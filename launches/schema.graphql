@@ -1,0 +1,21 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@shareable"])
+
+type Launch @key(fields: "id") {
+  id: ID
+  date: String
+  payload: String
+  vehicle: String
+  site: String
+  remark: String
+  year: Int
+}
+
+type Rocket @key(fields: "name") {
+  name: String
+  launches: [Launch]
+}
+
+type Query {
+  getLaunches: [Launch]
+}

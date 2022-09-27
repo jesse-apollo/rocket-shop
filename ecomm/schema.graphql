@@ -1,0 +1,54 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@shareable"])
+
+
+type Rocket @key(fields: "id") @key(fields: "name") {
+  id: ID
+  name: String
+  cmp: String
+  wiki: String
+  image: String
+  status: String
+  liftoffThurst: String
+  payloadToLEO: String
+  stages: Int
+  strapOns: Int
+  rocketHeight: String
+  price: String
+  payloadToGTO: String
+  fairingDiameter: String
+  fairingHeight: String
+}
+
+type Customer {
+
+  id: ID
+  avatar: String
+  email: String
+  name: String
+  phoneNumber: String
+}
+
+type Cart {
+  id: ID
+  customer: Customer
+  items: [Rocket]
+}
+
+type Query {
+  getCart(userId: String): Cart
+  cart(userId: String): Cart
+  getCustomers: [Customer]
+  customer: Customer
+  getRockets: [Rocket]
+  rockets: [Rocket]
+  rocket(name: String): Rocket
+}
+
+input CartUpdate {
+  items: [ID]
+}
+
+type Mutation {
+  updateCart(userId: String, cart: CartUpdate): Cart
+}
