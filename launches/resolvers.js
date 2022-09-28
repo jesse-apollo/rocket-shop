@@ -5,12 +5,6 @@ module.exports = {
             dataSources.launchAPI.getLaunches(args),
     },
     Rocket: {
-        __resolveReference: async (rocket, {dataSources}, info) => {
-            return {
-                "name":rocket.name,
-                //"launches": dataSources.launchAPI.getLaunchesByVehicleName(rocket.name)
-            };
-        },
         launches: async (rocket, _, {dataSources}, info) => 
             dataSources.launchAPI.getLaunchesByVehicleName(rocket.name)
     },
