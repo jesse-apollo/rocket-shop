@@ -9,7 +9,7 @@ type Rocket @key(fields: "id") @key(fields: "name") {
   wiki: String
   image: String
   status: String
-  liftoffThurst: String
+  liftoffThrust: String
   payloadToLEO: String
   stages: Int
   strapOns: Int
